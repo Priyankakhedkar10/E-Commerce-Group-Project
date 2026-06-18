@@ -114,3 +114,39 @@ function getFilteredProducts() {
     }
     return products;
 }
+function renderWishlist() {
+    const products = getFilteredProducts();
+    wishlistGrid.innerHTML = "";
+    if(products.length === 0){
+        wishlistGrid.style.display ="none";
+        emptyState.style.display = "block";
+        updateSummary();
+        return;
+    }
+
+    wishlistGrid.style.display = "grid";
+    emptyState.style.display ="none";
+    products.forEach(product => {
+        const clone = productTemplate.content .cloneNode(true);
+        const image =clone.querySelector( ".product-image" );
+        const name =clone.querySelector(".product-name" );
+        const category = clone.querySelector( ".product-category");
+        const price = clone.querySelector(".product-price" );
+        const oldPrice = clone.querySelector(".old-price" );
+        const qtyValue = clone.querySelector(".qty-value");
+        image.src = product.image || "https://via.placeholder.com/300";
+        name.textContent = product.name;
+        category.textContent = product.category || "";
+        price.textContent = "₹" + product.price;
+        oldPrice.textContent = product.oldPrice ? "₹" + product.oldPrice : "";
+        qtyValue.textContent = product.quantity || 1;
+        clone.querySelector(".qty-minus").addEventListener( "click", () => {
+                if( product.quantity > 1){
+                    product.quantity--;
+                    const wishlist = getWishlist();
+                    const index = wishlist.findIndex( item => item.id === product.id );
+                    wishlist[index] = product;
+                    saveWishlist( wishlist );
+                    renderWishlist();
+                }
+            } );
