@@ -18,3 +18,14 @@ function showSlide(index) {
 
     slides[index].classList.add("active");
 }
+
+function nextSlide() {
+
+    currentSlide++;
+
+    if (currentSlide >= slides.length) {
+        currentSlide = 0;
+    }
+
+    showSlide(currentSlide);
+}
