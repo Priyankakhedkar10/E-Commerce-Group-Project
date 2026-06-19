@@ -279,3 +279,22 @@ header .navbar {
     border-radius: 25px;
     cursor: pointer;
 }
+/* offer banner */
+.offer-banner {
+    margin: 80px 8%;
+    padding: 80px 20px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #111827, #1f2937);
+    text-align: center;
+    color: white;
+}
+
+.offer-content h2 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.offer-content p {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+}
