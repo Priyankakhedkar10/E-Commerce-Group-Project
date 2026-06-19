@@ -67,3 +67,24 @@ function openProductDetails() {
 function shopNow() {
     window.location.href = "products.html";
 }
+
+// newsletter
+// email validation
+function subscribeNewsletter() {
+
+    let email = document.getElementById("email").value;
+
+    if(email === "") {
+        alert("Please enter your email address!");
+        return;
+    }
+
+    if(!email.includes("@") || !email.includes(".")) {
+        alert("Please enter a valid email address!");
+        return;
+    }
+
+    alert("Thank you for subscribing!");
+
+    document.getElementById("email").value = "";
+}
